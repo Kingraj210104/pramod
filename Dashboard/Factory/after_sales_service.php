@@ -280,7 +280,7 @@ $ticket_result = $conn->query($ticket_query);
 <!-- Cards -->
 <div class="row">
     <div class="col-md-3 col-sm-6 mb-4">
-        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #0d6efd;">
+        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #ff9933;">
             <div class="card-body">
                 <h6 class="text-muted">Open Tickets</h6>
                 <h3 class="fw-bold"><?php echo htmlspecialchars($open_tickets); ?></h3>
@@ -558,7 +558,7 @@ $ticket_result = $conn->query($ticket_query);
             datasets: [{
                 data: [<?php echo $pie_data['Open']; ?>, <?php echo $pie_data['In Progress']; ?>, <?php echo $pie_data['Resolved']; ?>, <?php echo $pie_data['Closed']; ?>],
                 backgroundColor: [
-                    '#0d6efd',  // Blue (Open)
+                    '#ff9933',  // Blue (Open)
                     '#20c997',  // Green (In Progress)
                     '#ffc107',  // Orange (Resolved)
                     '#fd7e14',  // Orange-dark (Closed)
@@ -589,8 +589,8 @@ $ticket_result = $conn->query($ticket_query);
                 label: 'Tickets',
                 data: <?php echo json_encode($line_data); ?>,
                 fill: false,
-                borderColor: '#0d6efd',
-                backgroundColor: '#0d6efd',
+                borderColor: '#ff9933',
+                backgroundColor: '#ff9933',
                 tension: 0.3,
                 pointRadius: 5,
                 pointHoverRadius: 6

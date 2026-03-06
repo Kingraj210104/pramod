@@ -211,7 +211,7 @@ function get_status_badge($status)
     <!-- Payment Overview -->
     <div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
         <div class="col">
-            <div class="card stat-card card-border shadow-sm" style="border-left: 5px solid #0d6efd;">
+            <div class="card stat-card card-border shadow-sm" style="border-left: 5px solid #ff9933;">
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
@@ -841,8 +841,8 @@ while ($row = $result->fetch_assoc()) {
             datasets: [{
                 label: 'Revenue',
                 data: <?php echo json_encode($revenue); ?>,
-                backgroundColor: '#0d6efd',
-                borderColor: '#0d6efd',
+                backgroundColor: '#ff9933',
+                borderColor: '#ff9933',
                 borderWidth: 1,
                 borderRadius: 6,
                 barThickness: 40
@@ -873,7 +873,7 @@ while ($row = $result->fetch_assoc()) {
             datasets: [{
                 data: <?php echo json_encode($sales); ?>,
                 backgroundColor: [
-                    '#0d6efd',
+                    '#ff9933',
                     '#20c997',
                     '#ffc107',
                     '#fd7e14'
@@ -929,7 +929,7 @@ while ($row = $result->fetch_assoc()) {
     }
 
     .text-blue {
-        color: #0d6efd !important;
+        color: #ff9933 !important;
     }
 
     .bg-green-subtle {
@@ -965,7 +965,7 @@ while ($row = $result->fetch_assoc()) {
     }
 
     .border-primary-hover:hover {
-        border-color: #0d6efd !important;
+        border-color: #ff9933 !important;
         background-color: rgba(13, 110, 253, 0.05) !important;
     }
 

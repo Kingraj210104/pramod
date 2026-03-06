@@ -51,7 +51,7 @@
   }
 
   .avatar-blue {
-    background-color: #0d6efd;
+    background-color: #ff9933;
   }
 
   .avatar-green {

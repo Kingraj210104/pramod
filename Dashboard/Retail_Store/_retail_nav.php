@@ -20,16 +20,77 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
+        /* highlight matches in search inputs */
         mark.navbar-search-highlight { background-color: yellow; color: black; padding: 0 2px; border-radius: 2px; }
-        .sidebar { position: fixed; top: 0; left: 0; height: 100%; width: 220px; background-color: #f8f9fa; overflow-y: auto; transition: transform 0.3s ease-in-out; z-index: 1000; border-right: 1px solid #dee2e6; }
-        .nav-link { color: #333; padding: 10px 15px; border-radius: 5px; margin: 2px 10px; transition: 0.2s; }
-        .nav-link:hover { background-color: #e9ecef; color: #0d6efd; }
-        .nav-link.active { background-color: #0d6efd; color: white !important; font-weight: 500; }
-        .sidebar-header { padding: 20px; text-align: center; border-bottom: 1px solid #dee2e6; }
-        .header { margin-left: 220px; padding: 15px 25px; background: #fff; border-bottom: 1px solid #eee; }
-        .footer { padding: 15px; text-align: center; font-size: 0.8rem; color: #888; }
-        @media (max-width: 768px) { .sidebar { width: 250px; transform: translateX(-100%); } .sidebar.active { transform: translateX(0); } .header { margin-left: 0; } }
-        .overlay { display: none; position: fixed; top: 0; left: 0; height: 100vh; width: 100vw; background: rgba(0,0,0,0.4); z-index: 999; }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 220px;
+            background-color: #ffffff;
+            overflow-y: auto;
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+            border-right: 1px solid #ff9933;
+        }
+
+        .nav-link {
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 2px 10px;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover {
+            background-color: #ff9933;
+            color: #fff;
+        }
+
+        .nav-link.active {
+            background-color: #ff9933;
+            color: white !important;
+            font-weight: 500;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ff9933;
+        }
+
+        .header {
+            margin-left: 220px;
+            padding: 15px 25px;
+            background: #fff;
+            border-bottom: 2px solid #ff9933;
+        }
+
+        .footer {
+            padding: 15px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* disable mobile hide to keep desktop layout consistent */
+        @media (max-width: 768px) {
+            .sidebar { width: 220px; transform: translateX(0); }
+            .header { margin-left: 220px; }
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            background: rgba(0,0,0,0.4);
+            z-index: 999;
+        }
     </style>
 </head>
 

@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="col-md-4 col-sm-6 mb-4">
-                <div class="card stat-card cards card-border shadow-sm h-100" style="border-left: 5px solid #0d6efd;">
+                <div class="card stat-card cards card-border shadow-sm h-100" style="border-left: 5px solid #ff9933;">
                     <div class="card-body">
                         <h6 class="text-muted d-flex align-items-center"> Pending Deliveries
                         </h6>
@@ -103,7 +103,7 @@
         <div class="tab-pane fade show active" id="salesTab">
             <div class="row">
                 <div class="col-12 mb-4">
-                    <div class="card shadow-sm cards card-border" style="border-left: 5px solid #0d6efd;">
+                    <div class="card shadow-sm cards card-border" style="border-left: 5px solid #ff9933;">
                         <div class="card-body">
                             <h5 class="card-title">Sales Performance</h5>
                             <p class="text-muted">Monthly sales for the last 6 months</p>
@@ -234,8 +234,8 @@
                     label: 'Revenue',
                     data: [<?= $totalsStr ?>],
                     fill: false,
-                    borderColor: '#0d6efd',
-                    backgroundColor: '#0d6efd',
+                    borderColor: '#ff9933',
+                    backgroundColor: '#ff9933',
                     tension: 0.3,
                     pointRadius: 5,
                     pointHoverRadius: 6
@@ -265,7 +265,7 @@
                 labels: <?= json_encode($categoryLabels) ?>,
                 datasets: [{
                     data: <?= json_encode($stockCounts) ?>,
-                    backgroundColor: ['#0d6efd', '#198754', '#ffc107', '#6f42c1']
+                    backgroundColor: ['#ff9933', '#198754', '#ffc107', '#6f42c1']
                 }]
             },
             options: {
@@ -285,7 +285,7 @@
                 datasets: [{
                     data: <?php echo json_encode($paymentCounts); ?>,
                     backgroundColor: [
-                        '#0d6efd',
+                        '#ff9933',
                         '#20c997',
                         '#ffc107',
                         '#fd7e14'

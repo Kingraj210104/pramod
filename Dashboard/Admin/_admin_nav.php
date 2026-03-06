@@ -184,11 +184,12 @@
         top: 0;
         left: 0;
         height: 100vh;
-        width: 200px;
-        background-color: #f8f9fa;
+        width: 220px;
+        background-color: #ffffff;
         overflow-y: auto;
         transition: transform 0.3s ease-in-out;
         z-index: 1000;
+        border-right: 1px solid #ff9933;
     }
     /* Mobile: Hide sidebar by default */
     @media (max-width: 768px) {

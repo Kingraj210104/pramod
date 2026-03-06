@@ -341,7 +341,7 @@ $stmt->close();
             datasets: [{
                 data: <?php echo json_encode($paymentCounts); ?>,
                 backgroundColor: [
-                    '#0d6efd',
+                    '#ff9933',
                     '#20c997',
                     '#ffc107',
                     '#fd7e14'
@@ -395,7 +395,7 @@ $stmt->close();
     }
 
     .border-primary-hover:hover {
-        border-color: #0d6efd !important;
+        border-color: #ff9933 !important;
         background-color: rgba(13, 110, 253, 0.05) !important;
     }
 </style>

@@ -563,7 +563,7 @@ $items_info = calculateChangeInfo($total_items_sold, $last_month_items);
 <!-- Cards -->
 <div class="row">
     <div class="col-md-3 col-sm-6 mb-4">
-        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #0d6efd;">
+        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #ff9933;">
             <div class="card-body">
                 <h6 class="text-muted">Today's Sales</h6>
                 <h3 class="fw-bold"><?php echo $total_sales_formatted; ?></h3>
@@ -1548,8 +1548,8 @@ $items_info = calculateChangeInfo($total_items_sold, $last_month_items);
                 datasets: [{
                     label: 'Revenue',
                     data: <?php echo json_encode($sales); ?>,
-                    backgroundColor: '#0d6efd',
-                    borderColor: '#0d6efd',
+                    backgroundColor: '#ff9933',
+                    borderColor: '#ff9933',
                     borderWidth: 1,
                     borderRadius: 6,
                     barThickness: 40
@@ -1580,7 +1580,7 @@ $items_info = calculateChangeInfo($total_items_sold, $last_month_items);
                 datasets: [{
                     data: <?php echo json_encode($sales); ?>,
                     backgroundColor: [
-                        '#0d6efd',  // Blue (Wires & Cables)
+                        '#ff9933',  // Blue (Wires & Cables)
                         '#20c997',  // Green (Switches & Sockets)
                         '#ffc107',  // Orange (Lighting)
                         '#fd7e14',  // Orange-dark (Fans)

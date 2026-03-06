@@ -453,7 +453,7 @@ $reports_data = [
         'by_product' => [
             'labels' => ['Copper Wire 1.5mm', 'Havells MCB 32A', 'LED Bulb 9W', 'Electric Cable 2.5mm'],
             'data' => [280000, 225000, 185000, 285000],
-            'colors' => ['#0d6efd', '#198754', '#ffc107', '#dc3545']
+            'colors' => ['#ff9933', '#198754', '#ffc107', '#dc3545']
         ],
         'recent_reports' => [
             [

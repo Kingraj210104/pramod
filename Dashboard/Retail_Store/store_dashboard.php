@@ -229,7 +229,7 @@ require_once 'database.php';
                 <!-- Cards Row 2 -->
                 <div class="row">
                     <div class="col-md-4 col-sm-6 mb-4">
-                        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #0d6efd;">
+                        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #ff9933;">
                             <div class="card-body">
                                 <h6 class="text-muted">Today's Sales</h6>
                                 <h3 class="fw-bold">₹<?= number_format($todaySales) ?></h3>
@@ -701,8 +701,8 @@ require_once 'database.php';
                     datasets: [{
                         label: 'Daily Sales (₹)',
                         data: <?= json_encode($salesData) ?>,
-                        backgroundColor: '#0d6efd',
-                        borderColor: '#0d6efd',
+                        backgroundColor: '#ff9933',
+                        borderColor: '#ff9933',
                         borderWidth: 1
                     }]
                 },
@@ -725,7 +725,7 @@ require_once 'database.php';
                     labels: <?= json_encode($categoryLabels) ?>,
                     datasets: [{
                         data: <?= json_encode($stockCounts) ?>,
-                        backgroundColor: ['#0d6efd', '#198754', '#ffc107', '#6f42c1']
+                        backgroundColor: ['#ff9933', '#198754', '#ffc107', '#6f42c1']
                     }]
                 },
                 options: {
@@ -745,7 +745,7 @@ require_once 'database.php';
                     datasets: [{
                         data: <?php echo json_encode($paymentCounts); ?>,
                         backgroundColor: [
-                            '#0d6efd',
+                            '#ff9933',
                             '#20c997',
                             '#ffc107',
                             '#fd7e14'

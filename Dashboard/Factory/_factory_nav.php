@@ -192,32 +192,24 @@
         top: 0;
         left: 0;
         height: 100%;
-        width: 200px;
-        background-color: #f8f9fa;
+        width: 220px;
+        background-color: #ffffff;
         overflow-y: auto;
         transition: transform 0.3s ease-in-out;
         z-index: 1000;
+        border-right: 1px solid #ff9933;
     }
 
-    /* Mobile: Hide sidebar by default */
+    /* Desktop‑only layout: keep sidebar visible */
     @media (max-width: 768px) {
         .sidebar {
-            width: 50%;
-            transform: translateX(-100%);
-        }
-
-        .sidebar.active {
+            width: 220px;
             transform: translateX(0);
         }
 
         .overlay {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.4);
+        }
             z-index: 999;
         }
 

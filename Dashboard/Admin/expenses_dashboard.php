@@ -193,7 +193,7 @@ $pie_query = "SELECT category, SUM(amount) as total FROM expenses WHERE YEAR(dat
 $pie_result = $conn->query($pie_query);
 $pie_labels = [];
 $pie_data = [];
-$pie_colors = ['#0d6efd', '#20c997', '#ffc107', '#fd7e14', '#6f42c1', '#C66EF9'];
+$pie_colors = ['#ff9933', '#20c997', '#ffc107', '#fd7e14', '#6f42c1', '#C66EF9'];
 $category_expenses = []; // For analysis table
 $color_index = 0;
 if ($pie_result) {
@@ -436,7 +436,7 @@ if ($itemResult->num_rows > 0) {
 <!-- Cards -->
 <div class="row">
     <div class="col-md-3 col-sm-6 mb-4">
-        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #0d6efd;">
+        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #ff9933;">
             <div class="card-body">
                 <h6 class="text-muted">Monthly Expenses</h6>
                 <h3 class="fw-bold">₹<?php echo number_format($monthly_expenses, 0); ?></h3>
@@ -475,7 +475,7 @@ if ($itemResult->num_rows > 0) {
 <!-- Cards -->
 <div class="row">
     <div class="col-md-3 col-sm-6 mb-4">
-        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #0d6efd;">
+        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #ff9933;">
             <div class="card-body">
                 <h6 class="text-muted">Daily Expenses</h6>
                 <h3 class="fw-bold">₹<?php echo number_format($today_expenses, 0); ?></h3>
@@ -918,8 +918,8 @@ if ($itemResult->num_rows > 0) {
             datasets: [{
                 label: 'Expenses',
                 data: <?php echo json_encode($bar_data); ?>,
-                backgroundColor: '#0d6efd',
-                borderColor: '#0d6efd',
+                backgroundColor: '#ff9933',
+                borderColor: '#ff9933',
                 borderWidth: 1,
                 borderRadius: 6,
                 barThickness: 40

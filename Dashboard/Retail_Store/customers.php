@@ -323,7 +323,7 @@ function get_type_badge($type)
     <!-- Customer Analytics -->
     <div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
         <div class="col">
-            <div class="card stat-card card-border shadow-sm" style="border-left: 5px solid #0d6efd;">
+            <div class="card stat-card card-border shadow-sm" style="border-left: 5px solid #ff9933;">
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
@@ -856,7 +856,7 @@ function get_type_badge($type)
     }
 
     .text-primary {
-        color: #0d6efd !important;
+        color: #ff9933 !important;
     }
 
     .bg-secondary-subtle {

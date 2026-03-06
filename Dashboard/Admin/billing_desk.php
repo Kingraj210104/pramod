@@ -434,7 +434,7 @@ $returns = $conn->query("SELECT COUNT(*) AS count, IFNULL(SUM(Grand_total), 0) A
 <!-- Cards -->
 <div class="row">
     <div class="col-md-3 col-sm-6 mb-4">
-        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #0d6efd;">
+        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #ff9933;">
             <div class="card-body">
                 <h6 class="text-muted">Pending Invoices</h6>
                 <h3 class="fw-bold">₹<?= number_format($pending['total']) ?></h3>
@@ -2064,8 +2064,8 @@ $returns = $conn->query("SELECT COUNT(*) AS count, IFNULL(SUM(Grand_total), 0) A
                 datasets: [{
                     label: 'Revenue',
                     data: <?php echo json_encode($billCounts); ?>,
-                    backgroundColor: '#0d6efd',
-                    borderColor: '#0d6efd',
+                    backgroundColor: '#ff9933',
+                    borderColor: '#ff9933',
                     borderWidth: 1,
                     borderRadius: 6,
                     barThickness: 40
@@ -2098,7 +2098,7 @@ $returns = $conn->query("SELECT COUNT(*) AS count, IFNULL(SUM(Grand_total), 0) A
                 datasets: [{
                     data: <?php echo json_encode($paymentCounts); ?>,
                     backgroundColor: [
-                        '#0d6efd',
+                        '#ff9933',
                         '#20c997',
                         '#ffc107',
                         '#fd7e14',

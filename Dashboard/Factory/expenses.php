@@ -331,7 +331,7 @@ $pendingCount = $pending['amount'] ?: 0;
 <!-- Cards -->
 <div class="row">
     <div class="col-md-3 col-sm-6 mb-4">
-        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #0d6efd;">
+        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #ff9933;">
             <div class="card-body">
                 <h6 class="text-muted">Monthly Expenses</h6>
                 <h3 class="fw-bold">₹<?= number_format($salesAmount, 2) ?></h3>
@@ -473,7 +473,7 @@ $ytd_expenses_class = $ytd_expenses_percent >= 0 ? 'text-success' : 'text-danger
 <!-- Cards -->
 <div class="row">
     <div class="col-md-3 col-sm-6 mb-4">
-        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #0d6efd;">
+        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #ff9933;">
             <div class="card-body">
                 <h6 class="text-muted">Daily Expenses</h6>
                 <h3 class="fw-bold">₹<?php echo number_format($today_expenses, 0); ?></h3>

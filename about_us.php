@@ -13,7 +13,7 @@
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #f8f9fa;
+      background: #ffffff;
       color: #212529;
     }
 
@@ -27,7 +27,7 @@
       text-align: center;
       font-size: 36px;
       font-weight: 700;
-      color: #0d6efd;
+      color: #ff9933;
       margin-bottom: 10px;
     }
 
@@ -55,8 +55,8 @@
     h2 {
       font-size: 28px;
       margin-bottom: 20px;
-      color: #0d6efd;
-      border-left: 4px solid #0d6efd;
+      color: #ff9933;
+      border-left: 4px solid #ff9933;
       padding-left: 15px;
     }
 
@@ -83,7 +83,7 @@
     ul li::before {
       position: absolute;
       left: 0;
-      color: #0d6efd;
+      color: #ff9933;
     }
   </style>
 </head>

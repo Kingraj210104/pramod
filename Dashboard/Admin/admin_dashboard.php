@@ -525,7 +525,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['whatAction'])) {
         .form-control:focus,
         .form-select:focus {
             box-shadow: none;
-            border-color: #0d6efd;
+            border-color: #ff9933;
         }
 
         .btn-outline-danger:hover {
@@ -633,7 +633,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['whatAction'])) {
             <!-- HTML Dashboard Cards -->
             <div class="row">
                 <div class="col-md-3 col-sm-6 mb-4">
-                    <div class="card shadow-sm" style="border-left: 5px solid #0d6efd;">
+                    <div class="card shadow-sm" style="border-left: 5px solid #ff9933;">
                         <div class="card-body">
                             <h6 class="text-muted">Total Sales</h6>
                             <h3 class="fw-bold">₹<?= number_format($salesAmount, 2) ?></h3>
@@ -2401,8 +2401,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['whatAction'])) {
                     label: 'Revenue',
                     data: [<?= $totalsStr ?>],
                     fill: false,
-                    borderColor: '#0d6efd',
-                    backgroundColor: '#0d6efd',
+                    borderColor: '#ff9933',
+                    backgroundColor: '#ff9933',
                     tension: 0.3,
                     pointRadius: 5,
                     pointHoverRadius: 6
@@ -2435,7 +2435,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['whatAction'])) {
                 datasets: [{
                     data: <?php echo json_encode($paymentCounts); ?>,
                     backgroundColor: [
-                        '#0d6efd',
+                        '#ff9933',
                         '#20c997',
                         '#ffc107',
                         '#fd7e14'

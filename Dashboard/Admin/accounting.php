@@ -247,7 +247,7 @@ $profit_percent = ($last_profit > 0) ? ($profit - $last_profit) / $last_profit *
 <!-- Cards -->
 <div class="row">
     <div class="col-md-4 col-sm-6 mb-4">
-        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #0d6efd;">
+        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #ff9933;">
             <div class="card-body">
                 <h6 class="text-muted">Monthly Revenue</h6>
                 <h3 class="fw-bold">₹<?= number_format($revenue['total']) ?></h3>

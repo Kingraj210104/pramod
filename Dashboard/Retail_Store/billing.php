@@ -1790,7 +1790,7 @@ $types = ['All', 'Retail', 'Wholesale'];
     }
 
     .text-blue {
-        color: #0d6efd;
+        color: #ff9933;
     }
 
     .text-green {

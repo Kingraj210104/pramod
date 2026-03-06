@@ -320,7 +320,7 @@ $filtered_requests = array_filter($supply_requests, function ($request) use ($se
     <!-- Quick Stats -->
     <div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
         <div class="col">
-            <div class="card stat-card card-border shadow-sm" style="border-left: 5px solid #0d6efd;">
+            <div class="card stat-card card-border shadow-sm" style="border-left: 5px solid #ff9933;">
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>

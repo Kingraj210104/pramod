@@ -1,7 +1,8 @@
 <style>
     .site-footer {
-        background-color: #333;
-        color: #fff;
+        /* lighter saffron footer instead of dark theme */
+        background-color: #ff9933;
+        color: #ffffff;
         padding: 3rem 0;
         text-align: center;
     }
@@ -16,7 +17,7 @@
     .footer-widget h3 {
         font-size: 1.2rem;
         margin-bottom: 0.8rem;
-        color: #eee;
+        color: #ffffff;
     }
     .footer-widget ul {
         list-style: none;
@@ -27,24 +28,24 @@
         margin-bottom: 0.5rem;
     }
     .footer-widget a {
-        color: #ccc;
+        color: #ffffff;
         text-decoration: none;
         transition: color 0.3s ease;
     }
     .footer-widget a:hover {
-        color: #fff;
+        color: #000000;
     }
     .footer-bottom {
         margin-top: 1rem;
         font-size: 0.9rem;
-        color: #ccc;
+        color: #ffffff;
     }
     .footer-bottom a {
-        color: #fff;
+        color: #ffffff;
         text-decoration: none;
     }
     .footer-bottom a:hover {
-         color: #b0e0e6; /* hover color for footer links */
+         color: #000000; /* hover color for footer links */
     }
 </style>
 

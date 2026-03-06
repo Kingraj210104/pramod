@@ -234,7 +234,7 @@ $worker = $conn->query("SELECT COUNT(*) as count FROM factory_workers WHERE crea
 <!-- Cards -->
 <!-- <div class="row">
     <div class="col-md-3 col-sm-6 mb-4">
-        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #0d6efd;">
+        <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #ff9933;">
             <div class="card-body">
                 <h6 class="text-muted">Total Workers</h6>
                 <h3 class="fw-bold"><?= $worker ?></h3>

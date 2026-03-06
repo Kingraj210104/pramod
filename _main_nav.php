@@ -8,28 +8,43 @@
 ?>
 
 <style>
+    /* navbar theme: saffron links on white background */
+    .navbar {
+        background-color: #ffffff !important;
+    }
+    .navbar-brand {
+        color: #ff9933 !important;
+    }
+    .navbar .nav-link {
+        color: #333 !important;
+        font-weight: 500;
+    }
+    .navbar .nav-link:hover,
+    .navbar .nav-link:focus {
+        color: #ff9933 !important;
+    }
+
+    .nav-right-btn {
+        border-color: #ff9933 !important;
+        color: #ff9933 !important;
+    }
     .nav-right-btn:hover {
-        color: black !important;
+        background-color: #ff9933 !important;
+        color: #fff !important;
     }
 
+    /* dropdown menu adjustments keep saffron as accent */
     .dropdown-menu {
-        background-color: black;
+        background-color: #ffffff;
+        border: 1px solid #ff9933;
     }
-
     .dropdown-menu .dropdown-item {
-        color: rgb(17, 218, 253);
+        color: #333;
     }
-
     .dropdown-menu .dropdown-item:hover {
-        background-color: rgb(17, 218, 253);
-        color: black !important;
+        background-color: #ff9933;
+        color: #fff !important;
     }
-
-    .dropdown-part-1 .dropdown-item {
-        background-color: rgb(17, 218, 253);
-        color: black;
-    }
-
 </style>
 
 <body>

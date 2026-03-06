@@ -429,7 +429,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         .custom-dropdown-button {
-            background-color: #0d6efd;
+            background-color: #ff9933;
             color: white;
             padding: 0.375rem 0.75rem;
             border: none;
@@ -490,11 +490,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         .custom-dropdown-item:hover {
-            background-color: #f8f9fa;
+            background-color: #ffffff;
         }
 
         .custom-dropdown-item.active {
-            background-color: #0d6efd;
+            background-color: #ff9933;
             color: white;
         }
 
@@ -563,7 +563,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- Cards -->
     <div class="row">
         <div class="col-md-3 col-sm-6 mb-4">
-            <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #0d6efd;">
+            <div class="card stat-card cards card-border shadow-sm" style="border-left: 5px solid #ff9933;">
                 <div class="card-body">
                     <h6 class="text-muted">Total Stock Value</h6>
                     <h3 class="fw-bold">₹<?php echo number_format($totalValue, 2); ?></h3>
@@ -1963,7 +1963,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 labels: categoryLabels,
                 datasets: [{
                     data: categoryData,
-                    backgroundColor: ['#0d6efd', '#20c997', '#ffc107', '#fd7e14', '#6f42c1', '#6610f2', '#198754', '#d63384']
+                    backgroundColor: ['#ff9933', '#20c997', '#ffc107', '#fd7e14', '#6f42c1', '#6610f2', '#198754', '#d63384']
                 }]
             },
             options: {
@@ -1987,8 +1987,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     label: 'Stock Value',
                     data: trendData,
                     fill: false,
-                    borderColor: '#0d6efd',
-                    backgroundColor: '#0d6efd',
+                    borderColor: '#ff9933',
+                    backgroundColor: '#ff9933',
                     tension: 0.3,
                     pointRadius: 5,
                     pointHoverRadius: 6

@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['whatAction'])) {
 
 <style>
     .tab-nav {
-        background-color: #f8f9fa;
+        background-color: #ffffff;
         padding: 10px 20px;
         border-radius: 8px;
         margin-bottom: 20px;
@@ -89,8 +89,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['whatAction'])) {
     }
 
     .tab-nav a.active {
-        border-bottom: 3px solid #0d6efd;
-        color: #0d6efd;
+        border-bottom: 3px solid #ff9933;
+        color: #ff9933;
     }
 
     .table-heading {
