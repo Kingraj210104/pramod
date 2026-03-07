@@ -1,521 +1,223 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shree Unnati Wires & Traders - Premium Wire Manufacturing</title>
-    <meta name="description" content="Leading manufacturer of high-quality copper and aluminum wires for industrial, commercial, and residential applications. Explore our range of quality-assured products.">
-    <style>
-        /* Basic CSS for layout and button styling */
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            line-height: 1.6;
-            color: #333;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Purchase Billing</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:#f4f6fb;padding:20px;}
+.container{
+    max-width:1300px;margin:auto;background:white;
+    padding:25px;border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+h2{text-align:center;margin-bottom:20px;color:#333;}
+.section{margin-bottom:25px;}
+.section h3{margin-bottom:10px;color:#444;border-bottom:1px solid #eee;padding-bottom:5px;}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:10px;
+}
+input,select{
+    padding:10px;border:1px solid #ddd;border-radius:6px;width:100%;
+}
+.table-wrapper{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;margin-top:10px;}
+th,td{border:1px solid #eee;padding:8px;text-align:center;}
+th{background:#4a63e7;color:white;}
+.btn{
+    padding:8px 14px;border:none;border-radius:6px;
+    cursor:pointer;font-size:14px;
+}
+.add-btn{background:#4a63e7;color:white;}
+.delete-btn{background:#e74c3c;color:white;}
+.print-btn{background:#28a745;color:white;}
+.summary{
+    margin-top:20px;background:#fafbff;
+    padding:15px;border-radius:8px;border:1px solid #eee;
+}
+.summary h3{color:#4a63e7;}
+.hidden{display:none;}
+@media print{
+    .btn{display:none;}
+}
+</style>
+
+<script>
+
+function toggleGST(){
+    let type=document.getElementById("gst_type").value;
+    let gstCols=document.querySelectorAll(".gst-col");
+
+    gstCols.forEach(col=>{
+        col.style.display=(type==="with")?"table-cell":"none";
+    });
+
+    calculateTotal();
+}
+
+function addRow(){
+    let table=document.getElementById("itemTable");
+    let row=table.insertRow(-1);
+
+    row.innerHTML=`
+        <td><input type="text"></td>
+
+        <td>
+            <select>
+                <option>PCS</option>
+                <option>KG</option>
+                <option>BOX</option>
+                <option>LTR</option>
+                <option>METER</option>
+                <option>SET</option>
+                <option>DOZEN</option>
+            </select>
+        </td>
+
+        <td><input type="number" value="1" oninput="calculateTotal()"></td>
+        <td><input type="number" oninput="calculateTotal()"></td>
+
+        <td>
+            <select class="gst-col" oninput="calculateTotal()">
+                <option value="0">0%</option>
+                <option value="5">5%</option>
+                <option value="12">12%</option>
+                <option value="18">18%</option>
+                <option value="28">28%</option>
+            </select>
+        </td>
+
+        <td><input type="number" readonly></td>
+        <td class="gst-col"><input type="number" readonly></td>
+        <td><input type="number" readonly></td>
+
+        <td><button class="btn delete-btn" onclick="deleteRow(this)">X</button></td>
+    `;
+
+    toggleGST();
+}
+
+function deleteRow(btn){
+    btn.parentNode.parentNode.remove();
+    calculateTotal();
+}
+
+function calculateTotal(){
+    let table=document.getElementById("itemTable");
+    let subtotal=0,totalGST=0,finalTotal=0;
+    let type=document.getElementById("gst_type").value;
+
+    for(let i=1;i<table.rows.length;i++){
+
+        let qty=table.rows[i].cells[2].children[0].value||0;
+        let price=table.rows[i].cells[3].children[0].value||0;
+        let gstRate=table.rows[i].cells[4].children[0].value||0;
+
+        let amount=qty*price;
+        table.rows[i].cells[5].children[0].value=amount.toFixed(2);
+
+        let gstAmount=0;
+
+        if(type==="with"){
+            gstAmount=amount*gstRate/100;
+            table.rows[i].cells[6].children[0].value=gstAmount.toFixed(2);
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        /* Header Styles */
-        .site-header {
-            background-color: #e3f2fd; /* Changed to a lighter blue color */
-            padding: 1rem 0;
-            border-bottom: 1px solid #eee;
-        }
-        .site-header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        .logo img {
-            height: 50px; /* Adjust logo height as needed */
-            margin-right: 15px;
-        }
-        .logo h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: #007bff; /* Changed back to the original blue color */
-        }
-        .main-navigation ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-        }
-        .main-navigation li {
-            margin-left: 20px;
-        }
-        .main-navigation a {
-            text-decoration: none;
-            color: #555; /* Changed back to the original dark gray color*/
-            transition: color 0.3s ease;
-            padding: 8px 12px; /* Add padding for better click area */
-            border-radius: 5px; /* Optional: round the links */
-        }
-        .main-navigation a:hover {
-            color: #007bff;
-            background-color: #b0e0e6; /* Slight background change on hover for better feedback */
-        }
-        /* Hero Section */
-        .hero-section {
-            padding: 4rem 0;
-            text-align: center;
-            background-color: #f0f8ff;
-        }
-        .hero-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #222;
-        }
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: #555;
-            margin-bottom: 2rem;
-        }
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
-            cursor: pointer; /* Indicate it's clickable */
-            border: none; /* Remove default button border */
-            font-size: 1rem;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            color: #fff;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3; /* Darker shade on hover */
-        }
-        .btn-secondary {
-            background-color: #6c757d;
-            color: #fff;
-        }
-        .btn-secondary:hover {
-            background-color: #5a6268; /* Darker shade on hover */
-        }
-        .btn:hover {
-            transform: scale(1.05); /* Slight scale-up on hover */
-        }
-        .btn:active {
-            transform: scale(0.95); /* Slight scale-down on click */
-        }
-        .hero-stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 3rem;
-            text-align: center;
-        }
-        .hero-stat {
-            padding: 1rem;
-        }
-        .hero-stat strong {
-            display: block;
-            font-size: 2rem;
-            color: #007bff;
-        }
-        .hero-stat span {
-            color: #777;
-        }
-        /* Features Section */
-        .features-section {
-            padding: 4rem 0;
-            background-color: #fff;
-        }
-        .section-title {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #222;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .feature-item {
-            background-color: #f9f9f9;
-            padding: 1.5rem;
-            border-radius: 5px;
-            text-align: center;
-            border: 1px solid #eee;
-        }
-        .feature-item h3 {
-            margin-top: 0;
-            color: #333;
-        }
-        .feature-item p {
-            color: #666;
-        }
-        /* Testimonials Section */
-        .testimonials-section {
-            padding: 4rem 0;
-            background-color: #f0f8ff;
-        }
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .testimonial-item {
-            background-color: #fff;
-            padding: 1.5rem;
-            border-radius: 5px;
-            font-style: italic;
-            border: 1px solid #ddd;
-        }
-        .testimonial-item p:last-child {
-            font-style: normal;
-            margin-top: 1rem;
-            font-weight: bold;
-            color: #555;
-        }
-        .testimonial-item span {
-            display: block;
-            font-weight: normal;
-            font-style: normal;
-            color: #777;
-        }
-        /* Contact Section */
-        .contact-section {
-            padding: 4rem 0;
-            background-color: #fff;
-        }
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .contact-info {
-            padding: 1.5rem;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            border: 1px solid #eee;
-        }
-        .contact-info h3 {
-            color: #333;
-        }
-        .contact-info p {
-            color: #666;
-        }
-        .contact-info a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .contact-info a:hover {
-             color: #0056b3; /* Darker shade on hover */
-        }
-        .contact-form {
-            padding: 1.5rem;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            border: 1px solid #eee;
-        }
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #444;
-            font-weight: bold;
-        }
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="tel"],
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 1rem;
-        }
-        .form-group button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-        }
-        .form-group button:hover {
-            background-color: #0056b3;
-            transform: scale(1.02);
-        }
-        .form-group button:active {
-            transform: scale(0.98);
-        }
-        /* Site Footer */
-        .site-footer {
-            background-color: #333;
-            color: #fff;
-            padding: 3rem 0;
-            text-align: center;
-        }
-        .footer-widgets {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-        .footer-widget {
-            margin: 1rem;
-        }
-        .footer-widget h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            color: #eee;
-        }
-        .footer-widget ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .footer-widget li {
-            margin-bottom: 0.5rem;
-        }
-        .footer-widget a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .footer-widget a:hover {
-            color: #fff;
-        }
-        .footer-bottom {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: #ccc;
-        }
-        .footer-bottom a {
-            color: #fff;
-            text-decoration: none;
-        }
-        .footer-bottom a:hover {
-             color: #b0e0e6; /* hover color for footer links */
-        }
-    </style>
+
+        let total=amount+gstAmount;
+        table.rows[i].cells[7].children[0].value=total.toFixed(2);
+
+        subtotal+=amount;
+        totalGST+=gstAmount;
+        finalTotal+=total;
+    }
+
+    finalTotal+=parseFloat(document.getElementById("transport_charge").value)||0;
+
+    document.getElementById("subtotal").innerText=subtotal.toFixed(2);
+    document.getElementById("gstTotal").innerText=totalGST.toFixed(2);
+    document.getElementById("grand").innerText=finalTotal.toFixed(2);
+}
+
+</script>
 </head>
+
 <body>
-    <header class="site-header">
-        <div class="container">
-            <div class="logo">
-                <img src="https://www.thermaxglobal.com/wp-content/uploads/2021/05/Unnati-Logo-min.jpg" alt="Shree Unnati Wires & Traders Logo">
-                <h1>Shree Unnati<br>WIRES & TRADERS</h1>
-            </div>
-            <nav class="main-navigation">
-                <ul>
-                    <li><a href="#" onclick="showAlert('Home')">Home</a></li>
-                    <li><a href="#" onclick="showAlert('About Us')">About Us</a></li>
-                    <li><a href="#" onclick="showAlert('Products')">Products</a></li>
-                    <li><a href="#" onclick="showAlert('Contact')">Contact</a></li>
-                    <li><a href="#" onclick="showAlert('Franchise')">Franchise</a></li>
-                    <li><a href="#" onclick="showAlert('Contact Us')">Contact Us</a></li>
-                    <li><a href="#" onclick="showAlert('Login')">Login</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <main>
-        <section class="hero-section">
-            <div class="container">
-                <h1 class="hero-title">Premium Wire Manufacturing</h1>
-                <p class="hero-subtitle">Leading manufacturer of high-quality copper and aluminum wires for industrial, commercial and residential applications</p>
-                <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary" onclick="showAlert('Explore Our Products')">Explore Our Products</a>
-                    <a href="#" class="btn btn-secondary" onclick="showAlert('Contact Us')">Contact Us</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <strong>25+</strong>
-                        <span>Years Experience</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong>500+</strong>
-                        <span>Products</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong>50+</strong>
-                        <span>Distributors</span>
-                    </div>
-                    <div class="hero-stat">
-                        <strong>100%</strong>
-                        <span>Quality Assured</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="container">
 
-        <section class="features-section">
-            <div class="container">
-                <h2 class="section-title">Industry-Leading Wire Manufacturing</h2>
-                <p style="text-align: center; margin-bottom: 2rem; color: #555;">Discover what makes Unnati Wires the preferred choice for quality electrical wires across sectors</p>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <h3>Superior Insulation</h3>
-                        <p>Our wires feature high-grade PVC and XLPE insulation for maximum safety and durability in all environments.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>High Conductivity</h3>
-                        <p>Premium grade copper ensures excellent electrical conductivity and energy efficiency for optimal performance.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>ISO Certified</h3>
-                        <p>All our manufacturing processes and products are ISO 9001:2015 certified for quality assurance and reliability.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Modern Manufacturing</h3>
-                        <p>State-of-the-art production facilities with advanced machinery for precision wire drawing and quality control.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Quality Testing</h3>
-                        <p>Rigorous testing at every production stage ensures our wires meet the highest industry standards and specifications.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Nationwide Distribution</h3>
-                        <p>Extensive distribution network ensuring timely delivery and consistent supply across the country.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Customization Options</h3>
-                        <p>Custom wire solutions available based on specific requirements for industrial and commercial applications.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Temperature Resistant</h3>
-                        <p>Our wires maintain performance integrity even under extreme temperature conditions and harsh environments.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<h2>Professional Purchase Billing</h2>
 
-        <section class="testimonials-section">
-            <div class="container">
-                <h2 class="section-title">Trusted by Industry Leaders</h2>
-                <p style="text-align: center; margin-bottom: 2rem; color: #555;">Hear from professionals who rely on our high-quality wires for their critical electrical projects</p>
-                <div class="testimonial-grid">
-                    <article class="testimonial-item">
-                        <p>"Unnati Wires has been our trusted supplier for over a decade. Their copper wires offer exceptional conductivity and have proven to be highly reliable for our electrical installations."</p>
-                        <p><strong>Rajesh Sharma</strong><br><span>Chief Procurement Officer, Electro Solutions Ltd.</span></p>
-                    </article>
-                    <article class="testimonial-item">
-                        <p>"The quality control at Unnati is remarkable. Every batch of wires we've received meets the exact specifications and industry standards. Their flame-retardant insulation is the best in the market."</p>
-                        <p><strong>Priya Patel</strong><br><span>Production Manager, PrimeTech Industries</span></p>
-                    </article>
-                    <article class="testimonial-item">
-                        <p>"As a distributor of electrical products, I can confidently say that Unnati Wires are among our best-selling items due to their consistent quality and competitive pricing."</p>
-                        <p><strong>Vikram Singh</strong><br><span>Managing Director, Singh Electrical Distributors</span></p>
-                    </article>
-                </div>
-            </div>
-        </section>
+<!-- Supplier Section -->
+<div class="section">
+<h3>Supplier Details</h3>
+<div class="grid">
+<input type="text" placeholder="Supplier Name">
+<input type="text" placeholder="Supplier GST No">
+<input type="text" placeholder="Mobile">
+<input type="text" placeholder="City">
+<input type="text" placeholder="State">
+<input type="text" placeholder="Bill No">
+<input type="date">
+<select id="gst_type" onchange="toggleGST()">
+<option value="with">With GST</option>
+<option value="without">Without GST</option>
+</select>
+</div>
+</div>
 
-        <section class="contact-section">
-            <div class="container">
-                <h2 class="section-title">Get in Touch</h2>
-                <p style="text-align: center; margin-bottom: 2rem; color: #555;">Contact us to learn more about our products, services, or our business management system. We're here to support your business needs.</p>
-                <div class="contact-wrapper">
-                    <div class="contact-info">
-                        <h3>Contact Information</h3>
-                        <p><strong>Phone:</strong> +91 98765 43210</p>
-                        <p><strong>Email:</strong> <a href="mailto:info@unnatitraders.com" onclick="showAlert('Email: info@unnatitraders.com')">info@unnatitraders.com</a></p>
-                        <p><strong>Location:</strong> 123 Industrial Area, Business District, City - 123456</p>
-                        <p><a href="#" onclick="showAlert('Visit Contact Page')">Visit Contact Page</a></p>
-                    </div>
-                    <div class="contact-form">
-                        <h3>Quick Inquiry</h3>
-                        <form onsubmit="showAlert('Inquiry Submitted'); return false;">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone</label>
-                                <input type="tel" id="phone" name="phone">
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="5"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Submit Inquiry</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+<!-- Transport Section -->
+<div class="section">
+<h3>Transport Details</h3>
+<div class="grid">
+<input type="text" placeholder="Vehicle Number">
+<input type="text" placeholder="LR / LT Number">
+<input type="number" id="transport_charge" value="0" oninput="calculateTotal()" placeholder="Transport Charges">
+</div>
+</div>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-widgets">
-                <div class="footer-widget">
-                    <h3>Shree Unnati<br>WIRES & TRADERS</h3>
-                    <p>Leading manufacturer and supplier of wires and electric hardware in the region.</p>
-                </div>
-                <div class="footer-widget">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#" onclick="showAlert('Home')">Home</a></li>
-                        <li><a href="#" onclick="showAlert('About Us')">About Us</a></li>
-                        <li><a href="#" onclick="showAlert('Products')">Products</a></li>
-                        <li><a href="#" onclick="showAlert('Contact')">Contact</a></li>
-                        <li><a href="#" onclick="showAlert('Franchise & Distribution')">Franchise & Distribution</a></li>
-                    </ul>
-                </div>
-                <div class="footer-widget">
-                    <h3>Our Products</h3>
-                    <ul>
-                        <li><a href="#" onclick="showAlert('Copper Wires')">Copper Wires</a></li>
-                        <li><a href="#" onclick="showAlert('Aluminum Wires')">Aluminum Wires</a></li>
-                        <li><a href="#" onclick="showAlert('Switchgear')">Switchgear</a></li>
-                        <li><a href="#" onclick="showAlert('Circuit Breakers')">Circuit Breakers</a></li>
-                        <li><a href="#" onclick="showAlert('LED Lighting')">LED Lighting</a></li>
-                    </ul>
-                </div>
-                <div class="footer-widget">
-                    <h3>Contact Us</h3>
-                    <p>123 Industrial Area, Business District, City - 123456</p>
-                    <p>+91 98765 43210</p>
-                    <p><a href="mailto:info@unnatitraders.com" onclick="showAlert('Email: info@unnatitraders.com')">info@unnatitraders.com</a></p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                © 2025 Shree Unnati Wires & Traders. All rights reserved. | <a href="#" onclick="showAlert('Privacy Policy')">Privacy Policy</a> | <a href="#" onclick="showAlert('Terms of Service')">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
+<!-- Items -->
+<div class="section">
+<h3>Items</h3>
 
-    <script>
-        function showAlert(buttonName) {
-            alert(`You clicked the "${buttonName}" button/link! This functionality would be implemented with further development to navigate to different pages or perform specific actions.`);
-        }
-    </script>
+<div class="table-wrapper">
+<table id="itemTable">
+<tr>
+<th>Item</th>
+<th>Unit</th>
+<th>Qty</th>
+<th>Price</th>
+<th class="gst-col">GST %</th>
+<th>Amount</th>
+<th class="gst-col">GST Amt</th>
+<th>Total</th>
+<th>Action</th>
+</tr>
+</table>
+</div>
+
+<br>
+<button class="btn add-btn" onclick="addRow()">+ Add Item</button>
+
+</div>
+
+<!-- Summary -->
+<div class="summary">
+<p>Subtotal: ₹ <span id="subtotal">0.00</span></p>
+<p>Total GST: ₹ <span id="gstTotal">0.00</span></p>
+<hr>
+<h3>Grand Total: ₹ <span id="grand">0.00</span></h3>
+</div>
+
+<br>
+<button class="btn print-btn" onclick="window.print()">Print Bill</button>
+
+</div>
 
 </body>
 </html>
